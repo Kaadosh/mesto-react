@@ -1,11 +1,11 @@
 import React from "react";
 
-function Card(props) {
+function Card({ card, onCardClick }) {
   function handleClick() {
-    props.onCardClick(props.card);
+    onCardClick(card);
   }
   return (
-    <article className="card" key={props.card._id}>
+    <article className="card" key={card._id}>
       <button
         type="button"
         aria-label="Удалить"
@@ -14,13 +14,13 @@ function Card(props) {
       <img
         className="card__photo"
         onClick={handleClick}
-        style={{ backgroundImage: `url(${props.card.link})` }}
+        style={{ backgroundImage: `url(${card.link})` }}
         alt="#"
       />
-      <h2 className="card__title">{props.card.name}</h2>
+      <h2 className="card__title">{card.name}</h2>
       <div className="card__wrapper">
         <button type="button" aria-label="Лайк" class="card__like"></button>
-        <div className="card__counter">{props.card.likes.length}</div>
+        <div className="card__counter">{card.likes.length}</div>
       </div>
     </article>
   );

@@ -1,17 +1,25 @@
 import React from "react";
+import Card from "./Card";
 
-function Main(props) {
+function Main({
+  avatar,
+  name,
+  about,
+  onEditAvatar,
+  onEditProfile,
+  onAddPlace,
+}) {
   return (
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-wrapper">
-          <div
-            style={{ backgroundImage: `url(${props.avatar})` }}
+          <img
+            style={{ backgroundImage: `url(${avatar})` }}
             className="profile__img"
             alt=""
           />
           <button
-            onClick={props.onEditAvatar}
+            onClick={onEditAvatar}
             className="profile__button-avatar"
             type="button"
             title="Изменить аватар"
@@ -20,19 +28,19 @@ function Main(props) {
 
         <div className="profile__info">
           <div className="profile__info-name">
-            <h1 className="profile__title">{props.name}</h1>
+            <h1 className="profile__title">{name}</h1>
             <button
-              onClick={props.onEditProfile}
+              onClick={onEditProfile}
               className="profile__button"
               type="button"
               aria-label="Редактировать"
             ></button>
           </div>
-          <p className="profile__subtitle">{props.about}</p>
+          <p className="profile__subtitle">{about}</p>
         </div>
 
         <button
-          onClick={props.onAddPlace}
+          onClick={onAddPlace}
           className="profile__add"
           type="button"
           aria-label="Добавить фото"
