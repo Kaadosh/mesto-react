@@ -1,46 +1,47 @@
 import React from "react";
 
-function Main() {
+function Main(props) {
   return (
-    <main class="main">
-      <section class="profile">
-        <div class="profile__avatar-wrapper">
-          <img src="#" class="profile__img" alt="изображение Жак-Ива Кусто" />
+    <main className="main">
+      <section className="profile">
+        <div className="profile__avatar-wrapper">
+          <div
+            style={{ backgroundImage: `url(${props.avatar})` }}
+            className="profile__img"
+            alt=""
+          />
           <button
-            class="profile__button-avatar"
+            onClick={props.onEditAvatar}
+            className="profile__button-avatar"
             type="button"
             title="Изменить аватар"
           ></button>
         </div>
 
-        <div class="profile__info">
-          <div class="profile__info-name">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <div className="profile__info">
+          <div className="profile__info-name">
+            <h1 className="profile__title">{props.name}</h1>
             <button
-              class="profile__button"
+              onClick={props.onEditProfile}
+              className="profile__button"
               type="button"
               aria-label="Редактировать"
             ></button>
           </div>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <p className="profile__subtitle">{props.about}</p>
         </div>
 
         <button
-          class="profile__add"
+          onClick={props.onAddPlace}
+          className="profile__add"
           type="button"
           aria-label="Добавить фото"
-          onClick={handleEditAvatarClick}
         ></button>
       </section>
 
-      <section class="cards"></section>
+      <section className="cards"></section>
     </main>
   );
 }
-
-const handleEditAvatarClick = () => {
-  const popup = document.querySelector(".popup");
-  popup.classList.add("popup_opened");
-};
 
 export default Main;
