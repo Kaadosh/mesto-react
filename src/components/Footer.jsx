@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <footer class="footer">
-      <p class="footer__autor">© 2022 Mesto Russia</p>
+      <p class="footer__autor">© {new Date().getFullYear()} Mesto Russia</p>
     </footer>
   );
 }
