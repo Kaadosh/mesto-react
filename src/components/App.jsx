@@ -59,7 +59,7 @@ function App() {
       .getCards()
       .then((cards) => {
         setCards(cards);
-      })
+      }, [])
       .catch((err) => console.log(err));
   });
   return (
@@ -68,16 +68,13 @@ function App() {
       <Main
         name={userName}
         about={userDescription}
+        cards={cards}
         avatar={userAvatar}
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
+        onCardClick={handleCardClick}
       />
-      <section className="cards">
-        {cards.map((card) => (
-          <Card card={card} key={card._id} onCardClick={handleCardClick} />
-        ))}
-      </section>
       <Footer />
       <PopupWithForm
         isOpen={isEditProfilePopupOpen}

@@ -8,6 +8,8 @@ function Main({
   onEditAvatar,
   onEditProfile,
   onAddPlace,
+  onCardClick,
+  cards,
 }) {
   return (
     <main className="main">
@@ -47,7 +49,11 @@ function Main({
         ></button>
       </section>
 
-      <section className="cards"></section>
+      <section className="cards">
+        {cards.map((card) => (
+          <Card card={card} key={card._id} onCardClick={onCardClick} />
+        ))}
+      </section>
     </main>
   );
 }
