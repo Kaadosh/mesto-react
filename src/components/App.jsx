@@ -5,7 +5,6 @@ import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import api from "../utils/api";
-import Card from "./Card";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
@@ -59,9 +58,9 @@ function App() {
       .getCards()
       .then((cards) => {
         setCards(cards);
-      }, [])
+      })
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
     <body className="page">
       <Header />
@@ -88,9 +87,9 @@ function App() {
           id="username"
           name="username"
           className="popup__field popup__field_input_nickname"
-          value="Жак-Ив Кусто"
-          minlength="2"
-          maxlength="40"
+          value={userName}
+          minLength="2"
+          maxLength="40"
           required
         />
         <span className="popup__field-error nickName-error"></span>
@@ -99,9 +98,9 @@ function App() {
           id="about"
           name="about"
           className="popup__field popup__field_input_profession"
-          value="Исследователь океана"
-          minlength="2"
-          maxlength="200"
+          value={userDescription}
+          minLength="2"
+          maxLength="200"
           required
         />
         <span className="popup__field-error profession-error"></span>
@@ -119,8 +118,8 @@ function App() {
           name="name"
           className="popup__field popup__field_input_namecard"
           placeholder="Название"
-          minlength="2"
-          maxlength="30"
+          minLength="2"
+          maxLength="30"
           required
         />
         <span className="popup__field-error nameCard-error"></span>

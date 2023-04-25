@@ -19,7 +19,7 @@ function Card({ card, onCardClick }) {
       />
       <h2 className="card__title">{card.name}</h2>
       <div className="card__wrapper">
-        <button type="button" aria-label="Лайк" class="card__like"></button>
+        <button type="button" aria-label="Лайк" className="card__like"></button>
         <div className="card__counter">{card.likes.length}</div>
       </div>
     </article>
