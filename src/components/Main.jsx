@@ -1,22 +1,15 @@
 import React from "react";
 import Card from "./Card";
+import CurrentUserContext from "./CurrentUserContext";
 
-function Main({
-  avatar,
-  name,
-  about,
-  onEditAvatar,
-  onEditProfile,
-  onAddPlace,
-  onCardClick,
-  cards,
-}) {
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards }) {
+  const currentUser = React.useContext(CurrentUserContext);
   return (
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-wrapper">
           <img
-            style={{ backgroundImage: `url(${avatar})` }}
+            style={{ backgroundImage: `url(${CurrentUser.avatar})` }}
             className="profile__img"
             alt=""
           />
@@ -30,7 +23,7 @@ function Main({
 
         <div className="profile__info">
           <div className="profile__info-name">
-            <h1 className="profile__title">{name}</h1>
+            <h1 className="profile__title">{currentUser.name}</h1>
             <button
               onClick={onEditProfile}
               className="profile__button"
@@ -38,7 +31,7 @@ function Main({
               aria-label="Редактировать"
             ></button>
           </div>
-          <p className="profile__subtitle">{about}</p>
+          <p className="profile__subtitle">{currentUser.about}</p>
         </div>
 
         <button
