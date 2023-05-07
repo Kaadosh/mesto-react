@@ -19,13 +19,13 @@ class Api {
   }
 
   // postting cards
-  postCards(data) {
+  postCards(userData) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: `${data.name}`,
-        link: `${data.link}`,
+        name: userData.name,
+        link: userData.link,
       }),
     }).then((response) => this._checkResult(response));
   }
@@ -38,11 +38,11 @@ class Api {
   }
 
   // like card
-  likeCard(cardId) {
+  changeLikeCardStatus(cardId, isLiked) {
     return fetch(
       `https://mesto.nomoreparties.co/v1/cohort-62/cards/${cardId}/likes`,
       {
-        method: "PUT",
+        method: `${isLiked ? "PUT" : "DELETE"}`,
         headers: this._headers,
       }
     ).then((response) => this._checkResult(response));
@@ -65,25 +65,25 @@ class Api {
     }).then((response) => this._checkResult(response));
   }
 
-  editUserInfo(data) {
+  editUserInfo(userData) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-62/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.name,
-        about: data.about,
+        name: userData.name,
+        about: userData.about,
       }),
     }).then((response) => this._checkResult(response));
   }
 
-  editAvatar(data) {
+  editAvatar(userData) {
     return fetch(
       `https://mesto.nomoreparties.co/v1/cohort-62/users/me/avatar`,
       {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-          avatar: data.avatarlink,
+          avatar: userData.avatar,
         }),
       }
     ).then((response) => this._checkResult(response));

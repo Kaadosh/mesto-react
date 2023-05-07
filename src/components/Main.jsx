@@ -2,14 +2,22 @@ import React from "react";
 import Card from "./Card";
 import CurrentUserContext from "./CurrentUserContext";
 
-function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards }) {
+function Main({
+  onEditAvatar,
+  onEditProfile,
+  onAddPlace,
+  onCardClick,
+  handleCardLike,
+  handleCardDelete,
+  cards,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
   return (
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-wrapper">
           <img
-            style={{ backgroundImage: `url(${CurrentUser.avatar})` }}
+            style={{ backgroundImage: `url(${currentUser.avatar})` }}
             className="profile__img"
             alt=""
           />
@@ -44,7 +52,13 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards }) {
 
       <section className="cards">
         {cards.map((card) => (
-          <Card card={card} key={card._id} onCardClick={onCardClick} />
+          <Card
+            card={card}
+            key={card._id}
+            onCardClick={onCardClick}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+          />
         ))}
       </section>
     </main>

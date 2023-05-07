@@ -1,6 +1,14 @@
 import React from "react";
 
-function PopupWithForm({ name, isOpen, onClose, title, children, buttonText }) {
+function PopupWithForm({
+  name,
+  isOpen,
+  onClose,
+  title,
+  children,
+  buttonText,
+  handleSubmit,
+}) {
   return (
     <div className={`popup popup-${name} ${isOpen ? "popup_opened" : ""}`}>
       <div className={`popup__container popup_container-${name}`}>
@@ -13,6 +21,7 @@ function PopupWithForm({ name, isOpen, onClose, title, children, buttonText }) {
         <h2 className={`popup__title popup__title-${name}`}>{`${title}`}</h2>
         {children}
         <form
+          onSubmit={handleSubmit}
           className={`popup__form popup__form-${name}`}
           name={`${name}`}
           novalidate
