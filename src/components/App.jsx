@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import api from "../utils/api";
-import CurrentUserContext from "./CurrentUserContext";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
@@ -60,11 +60,11 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  function handleCardDelete(card) {
+  function handleCardDelete(cardId) {
     api
-      .removeCard(card._id)
+      .removeCard(cardId)
       .then(() => {
-        setCards((card) => cards.filter((el) => el._id !== card._id));
+        setCards((cards) => cards.filter((el) => el._id !== cardId));
       })
       .catch((err) => console.log(err));
   }
@@ -114,7 +114,7 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <body className="page">
+    <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Header />
         <Main
@@ -150,7 +150,7 @@ function App() {
         ></PopupWithForm>
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </CurrentUserContext.Provider>
-    </body>
+    </div>
   );
 }
 

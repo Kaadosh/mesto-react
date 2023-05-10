@@ -4,7 +4,7 @@ function ImagePopup({ card, onClose }) {
   return (
     <div className={`popup popup-view ${card ? "popup_opened" : ""}`}>
       <div className="popup__view-container">
-        <img
+        <div
           className="popup__photo-view"
           src={card ? card.link : ""}
           alt={card ? card.name : ""}

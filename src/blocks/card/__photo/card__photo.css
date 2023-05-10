@@ -1,10 +1,10 @@
 .card__photo {
   width: 100%;
   display: block;
-  object-fit: cover;
-  object-position: center;
+  background-size: cover;
+  background-position: 50%;
   aspect-ratio: 1/1;
   cursor: pointer;
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }

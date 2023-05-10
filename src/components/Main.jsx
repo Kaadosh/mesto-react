@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import CurrentUserContext from "./CurrentUserContext";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Main({
   onEditAvatar,
@@ -13,13 +13,13 @@ function Main({
 }) {
   const currentUser = React.useContext(CurrentUserContext);
   return (
-    <main className="main">
+    <div className="main">
       <section className="profile">
         <div className="profile__avatar-wrapper">
-          <img
+          <div
             style={{ backgroundImage: `url(${currentUser.avatar})` }}
             className="profile__img"
-            alt=""
+            alt={currentUser.name}
           />
           <button
             onClick={onEditAvatar}
@@ -61,7 +61,7 @@ function Main({
           />
         ))}
       </section>
-    </main>
+    </div>
   );
 }
 

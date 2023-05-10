@@ -24,7 +24,6 @@ function PopupWithForm({
           onSubmit={handleSubmit}
           className={`popup__form popup__form-${name}`}
           name={`${name}`}
-          novalidate
         >
           <button type="submit" name="save" className="popup__button">
             {`${buttonText}`}

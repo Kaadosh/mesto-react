@@ -39,34 +39,28 @@ class Api {
 
   // like card
   changeLikeCardStatus(cardId, isLiked) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-62/cards/${cardId}/likes`,
-      {
-        method: `${isLiked ? "PUT" : "DELETE"}`,
-        headers: this._headers,
-      }
-    ).then((response) => this._checkResult(response));
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: `${isLiked ? "PUT" : "DELETE"}`,
+      headers: this._headers,
+    }).then((response) => this._checkResult(response));
   }
 
   // delete like
   unlikeCard(cardId) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-62/cards/${cardId}/likes`,
-      {
-        method: "DELETE",
-        headers: this._headers,
-      }
-    ).then((response) => this._checkResult(response));
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((response) => this._checkResult(response));
   }
 
   getUserInfo() {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-62/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       headers: this._headers,
     }).then((response) => this._checkResult(response));
   }
 
   editUserInfo(userData) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-62/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -77,16 +71,13 @@ class Api {
   }
 
   editAvatar(userData) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-62/users/me/avatar`,
-      {
-        method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify({
-          avatar: userData.avatar,
-        }),
-      }
-    ).then((response) => this._checkResult(response));
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: userData.avatar,
+      }),
+    }).then((response) => this._checkResult(response));
   }
 }
 
