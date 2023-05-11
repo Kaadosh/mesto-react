@@ -19,12 +19,12 @@ function PopupWithForm({
           className="popup__close popup__close-profile"
         ></button>
         <h2 className={`popup__title popup__title-${name}`}>{`${title}`}</h2>
-        {children}
         <form
           onSubmit={handleSubmit}
           className={`popup__form popup__form-${name}`}
           name={`${name}`}
         >
+          {children}
           <button type="submit" name="save" className="popup__button">
             {`${buttonText}`}
           </button>
